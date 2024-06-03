@@ -36,8 +36,11 @@ function drawCircle(col, row, color) {
   ctx.beginPath();
   ctx.arc(x, y, circleRadius - 2, 0, Math.PI * 2);
   ctx.fillStyle = color;
+  ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
+  ctx.shadowBlur = 10;
   ctx.fill();
   ctx.closePath();
+  ctx.shadowBlur = 0;
 }
 
 function placeToken(event) {
@@ -61,9 +64,9 @@ function checkWinner(row, col) {
   return (
     checkDirection(row, col, 0, 1, color) || // Horizontal
     checkDirection(row, col, 1, 0, color) || // Vertical
-    checkDirection(row, col, 1, 1, color) || // Diagonal /
+    checkDirection(row, col, 1, 1, color) || // Diagonal
     checkDirection(row, col, 1, -1, color)
-  ); // Diagonal \
+  ); // Diagonal
 }
 
 function checkDirection(row, col, dRow, dCol, color) {
@@ -88,11 +91,11 @@ function checkDirection(row, col, dRow, dCol, color) {
 }
 
 function announceWinner(color) {
-  ctx.fillStyle = "black";
-  ctx.fillRect(0, 0, canvasWidth, canvasHeight);
-  ctx.fillStyle = color;
-  ctx.font = "30px Arial";
-  ctx.fillText(`${color} wins!`, canvasWidth / 2 - 75, canvasHeight / 2);
+  const winner = document.getElementById("winner");
+  winner.textContent = `${
+    color.charAt(0).toUpperCase() + color.slice(1)
+  } wins!`;
+  winner.style.visibility = "visible";
 }
 
 init();
