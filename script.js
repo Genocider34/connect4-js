@@ -25,7 +25,7 @@ function init() {
 function drawBoard() {
   for (let row = 0; row < numRows; row++) {
     for (let col = 0; col < numCols; col++) {
-      drawCircle(col, row, "white");
+      drawCircle(col, row, "#0d111d");
     }
   }
 }
@@ -47,11 +47,12 @@ function placeToken(event) {
   const col = Math.floor(event.offsetX / (canvasWidth / numCols));
   for (let row = numRows - 1; row >= 0; row--) {
     if (tokenGrid[row][col] === null) {
-      const color = turnRed ? "red" : "yellow";
+      const color = turnRed ? "#DE002B" : "#FCBB2C";
+      const announceColor = turnRed ? 'Red' : "Yellow";
       drawCircle(col, row, color);
       tokenGrid[row][col] = color;
       if (checkWinner(row, col)) {
-        announceWinner(color);
+        announceWinner(announceColor);
       }
       turnRed = !turnRed;
       return;
