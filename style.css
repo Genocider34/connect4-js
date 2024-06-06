@@ -1,0 +1,84 @@
+body {
+    background-color: #0d111d;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+h1 {
+    text-align: center;
+    color: white;
+    font-size: 3rem;
+  }
+
+h3 {
+   margin-top: -1em;
+   margin-left: 5em;
+   color: white;
+}
+
+#players {
+    color: white;
+    font-weight: bold;
+    margin-left: 7em;
+}
+
+canvas {
+    background-color: #393e79;
+    display: block;
+    margin: 0 auto;
+    margin-top: -6em;
+    border: solid 5px white;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgb(0, 0, 0, 0.5);
+  }
+
+#winner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 2rem;
+    visibility: hidden;
+    font-weight: bolder;
+    }
+
+#win_text, #color_win {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-left: .2em;
+}
+
+#restart {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    margin-top: 5em;
+    font-size: 1em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    color: white;
+    background-color: #0d111d00;
+    border: none;
+    visibility: hidden;
+}
+
+#restart:hover {
+    color: lightgreen;
+}
+
+footer p {
+    text-align: center;
+    color: white;
+    }

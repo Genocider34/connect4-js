@@ -8,6 +8,16 @@ const numRows = 6;
 const numCols = 7;
 const circleRadius = canvasWidth / (numCols * 2);
 
+const winner = document.getElementById("winner");
+const restart = document.getElementById("restart");
+const color_win = document.getElementById("color_win");
+const win_text =document.getElementById("win_text");
+const player_red = document.getElementById("red");
+const player_yellow = document.getElementById("yellow");
+
+let red_player = 0;
+let yellow_player = 0;
+
 let tokenGrid = [];
 let turnRed = true;
 
@@ -48,11 +58,12 @@ function placeToken(event) {
   for (let row = numRows - 1; row >= 0; row--) {
     if (tokenGrid[row][col] === null) {
       const color = turnRed ? "#DE002B" : "#FCBB2C";
-      const announceColor = turnRed ? 'Red' : "Yellow";
+      const announceColor = turnRed ? 'red' : "yellow";
       drawCircle(col, row, color);
       tokenGrid[row][col] = color;
       if (checkWinner(row, col)) {
         announceWinner(announceColor);
+        DashBoard();
       }
       turnRed = !turnRed;
       return;
@@ -92,11 +103,37 @@ function checkDirection(row, col, dRow, dCol, color) {
 }
 
 function announceWinner(color) {
-  const winner = document.getElementById("winner");
-  winner.textContent = `${
+  win_text.textContent = `${
     color.charAt(0).toUpperCase() + color.slice(1)
-  } wins!`;
+  }`;
+
+  win_text.style.color = turnRed ? 'red' : 'yellow';
+
   winner.style.visibility = "visible";
+  restart.style.visibility = "visible";
+
+  restart.addEventListener("click", restartGame);
+}
+
+function restartGame(event) {
+  ctx.beginPath();
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  init();
+
+  winner.style.visibility = "hidden";
+  restart.style.visibility = "hidden";
+
+  player_red.textContent = `Red: ${red_player}`;
+  player_yellow.textContent = `Yellow: ${yellow_player}`;
+}
+
+function DashBoard() {
+  if (turnRed) {
+    red_player++;
+  }
+  else {
+    yellow_player++;
+  }
 }
 
 init();
