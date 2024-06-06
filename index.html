@@ -1,24 +1,39 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Connect Force</title>
+    <title>Connect 4</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tiny5&display=swap"
+      rel="stylesheet"
+    />
     <style>
       body {
         background-color: #0d111d;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: "Poppins", sans-serif;
       }
       h1 {
         text-align: center;
         color: white;
-        font-size: 3rem;
+        font-size: 4rem;
+      }
+      .game-container {
+        text-align: center;
+        position: relative;
       }
       canvas {
         background-color: #393e79;
         display: block;
         margin: 0 auto;
-        border: solid 5px white;
+        border: 5px solid #ffffff;
         border-radius: 10px;
-        box-shadow: 0 0 15px rgb(0, 0, 0, 0.5);
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
       }
       #winner {
         position: absolute;
@@ -34,6 +49,30 @@
         font-size: 2rem;
         visibility: hidden;
       }
+      .scoreboard {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        color: white;
+        margin-bottom: 1rem;
+      }
+      .scoreboard div {
+        font-size: 1.5rem;
+      }
+      button {
+        padding: 1em 2em;
+        font-size: 1rem;
+        margin-top: 1rem;
+        cursor: pointer;
+        background-color: #393e79;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-family: inherit;
+      }
+      button:hover {
+        opacity: 0.8;
+      }
       footer p {
         text-align: center;
         color: white;
@@ -41,11 +80,18 @@
     </style>
   </head>
   <body>
-    <h1>Connect Force</h1>
-    <canvas id="gameCanvas" width="500" height="450"></canvas>
-    <div id="winner">Red wins!</div>
+    <h1>Connect Four</h1>
+    <div class="scoreboard">
+      <div id="redScore">Red: 0</div>
+      <div id="yellowScore">Yellow: 0</div>
+    </div>
+    <div class="game-container">
+      <canvas id="gameCanvas" width="500" height="450"></canvas>
+      <div id="winner">Red wins!</div>
+    </div>
+    <button id="resetButton">Reset Game</button>
     <footer>
-      <p>Developed by Alonzo, Bañaria and ???</p>
+      <p>Developed by Alonzo, Bañaria and Agnas</p>
     </footer>
     <script src="script.js"></script>
   </body>
